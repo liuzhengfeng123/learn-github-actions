@@ -1,0 +1,15 @@
+name: learn-github-actions
+run-name: ${{ github.actor }} is learning GitHub Actions in branch ${{github.ref_name}}
+on: [push]
+jobs:
+  check-bats-version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install -g bats
+      - run: bats -v
+      - run: echo "chemtrails over the country club"
+      - run: echo "this workflow is triggered by ${{ github.event_name }}"
