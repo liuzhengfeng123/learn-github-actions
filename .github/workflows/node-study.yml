@@ -2,7 +2,7 @@ name: nodejs-github-actions-study
 on:
   push:
     branches:
-      - github-actions-node
+      - master
 jobs:
   test-node:
     runs-on: ubuntu-latest
