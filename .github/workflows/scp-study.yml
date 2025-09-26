@@ -6,10 +6,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: "echo $(pwd)"
-      - run: "echo ${{ github.workspace }}"
-      - run: "cd ${{ github.workspace }}"
-      - run: "echo $(pwd)"
+      - run: echo ${{ github.workspace }}
+      - run: echo $(pwd)
       - name: List files in the repository
-        run: |
-          "ls"
+        run: "ls"
+      - name: 通过ppleboy/scp-action 复制文件
+        uses: appleboy/scp-action@v1
+        with:
+          host: 106.14.18.67
+          port: 22
+          key: ${{ secrets.MY_PRIVATE_KEY }}
+          username: admin
+          source: ${{ github.workspace }}/src
+          target: /home/admin/
