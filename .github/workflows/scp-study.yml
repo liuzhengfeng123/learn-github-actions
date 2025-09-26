@@ -1,0 +1,15 @@
+name: nodejs-github-actions-study
+
+on:
+  push:
+    branches:
+      - scp-study
+jobs:
+  connect-to-scp:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: "echo $(pwd)"
+      - run: "echo ${{ github.workspace }}"
+      - run: "cd ${{ github.workspace }}"
+      - run: "echo $(pwd)"
