@@ -1,9 +1,6 @@
 name: nodejs-github-actions-study
 
-on:
-  push:
-    branches:
-      - scp-study
+on: workflow_dispatch
 jobs:
   connect-to-scp:
     runs-on: ubuntu-latest
@@ -13,3 +10,6 @@ jobs:
       - run: "echo ${{ github.workspace }}"
       - run: "cd ${{ github.workspace }}"
       - run: "echo $(pwd)"
+      - name: List files in the repository
+        run: |
+          "ls"
