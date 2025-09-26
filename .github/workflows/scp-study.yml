@@ -17,5 +17,5 @@ jobs:
           port: 22
           key: ${{ secrets.MY_PRIVATE_KEY }}
           username: admin
-          source: ${{ github.workspace }}/src
+          source: src
           target: /home/admin/
