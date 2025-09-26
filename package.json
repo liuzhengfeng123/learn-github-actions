@@ -1,9 +1,12 @@
 {
   "name": "git-actions-study",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "preversion": "echo '👉 preversion: 版本变更前'",
+    "version": "echo '❌ 这个不会执行！'",
+    "postversion": "echo '👉 postversion: 版本已变更，准备提交'"
   },
   "keywords": [],
   "author": "liuzhengfeng <563596927@qq.com>",
