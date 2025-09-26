@@ -1,4 +1,4 @@
-name: nodejs-github-actions-study
+name: use workflow_dispatch to study github-actions
 
 on: workflow_dispatch
 jobs:
