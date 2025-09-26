@@ -3,6 +3,11 @@ name: use workflow_dispatch to study github-actions
 on: workflow_dispatch
 jobs:
   connect-to-scp:
+    env:
+      HOST: 106.14.18.67
+      PORT: 22
+      USER_NAME: admin
+      PRIVATE_KEY: ${{ secrets.MY_PRIVATE_KEY }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -13,9 +18,21 @@ jobs:
       - name: 通过ppleboy/scp-action 复制文件
         uses: appleboy/scp-action@v1
         with:
-          host: 106.14.18.67
-          port: 22
+          host: ${{ env.HOST }}
+          port: ${{ env.PORT }}
           key: ${{ secrets.MY_PRIVATE_KEY }}
-          username: admin
+          username: ${{ env.USER_NAME }}
           source: src
           target: /home/admin/
+      - name: "登录到 SSH 服务器修改 dist 文件权限"
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ env.HOST }}
+          port: ${{ env.PORT }}
+          key: ${{ secrets.MY_PRIVATE_KEY }}
+          username: ${{ env.USER_NAME }}
+          script: |
+            cd /home/admin
+            chgrp -R www-data src
+            chmod -R 750 src
+            mv src /data/
