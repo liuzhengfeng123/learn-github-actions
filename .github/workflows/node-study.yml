@@ -15,3 +15,6 @@ jobs:
           node-version: '22.19.0'
       - run: echo "$(node -v)"
       - run: echo "my test secret： ${{ env.NODE_AUTH_TOKEN_EXAMPLE }}"
+      - name: List files in the repository
+        run: |
+          ls
